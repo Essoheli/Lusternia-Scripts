@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE MudletPackage>
+<MudletPackage version="1.001">
+	<TriggerPackage>
+		<Trigger isActive="yes" isFolder="no" isTempTrigger="no" isMultiline="no" isPerlSlashGOption="no" isColorizerTrigger="no" isFilterTrigger="no" isSoundTrigger="no" isColorTrigger="no" isColorTriggerFg="no" isColorTriggerBg="no">
+			<name>Seasonal Descriptions</name>
+			<script>oldSeason = oldSeason or 0
+local descriptions ={"desc1","desc2","desc3","desc4"}
+local monthToSeason = {
+Kiani = 1,
+Dioni = 1,
+Vestian = 1,
+Avechary = 2,
+Dvarsh = 2,
+Tzarin = 2,
+Klangiary = 3,
+Juliary = 3,
+Shanthin = 3,
+Roarkian = 4,
+Estar = 4,
+Urlachmar = 4
+}
+local newSeason = monthToSeason[matches[2]]
+if newSeason~=oldSeason then
+  send("Describe self "..descriptions[newSeason])
+  oldSeason = newSeason
+end</script>
+			<triggerType>0</triggerType>
+			<conditonLineDelta>0</conditonLineDelta>
+			<mStayOpen>0</mStayOpen>
+			<mCommand></mCommand>
+			<packageName></packageName>
+			<mFgColor>#ff0000</mFgColor>
+			<mBgColor>#ffff00</mBgColor>
+			<mSoundFile></mSoundFile>
+			<colorTriggerFgColor>#000000</colorTriggerFgColor>
+			<colorTriggerBgColor>#000000</colorTriggerBgColor>
+			<regexCodeList>
+				<string>^Today is the .* of (\w+), .* years after the Coming of Estarra\.?</string>
+				<string>^It is now the .* of (\w+), .* years after the Coming of Estarra\.$</string>
+			</regexCodeList>
+			<regexCodePropertyList>
+				<integer>1</integer>
+				<integer>1</integer>
+			</regexCodePropertyList>
+		</Trigger>
+	</TriggerPackage>
+</MudletPackage>
